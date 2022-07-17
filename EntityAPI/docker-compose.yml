@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  client.api:
+    image: clientapi
+    build:
+      context: .
+      dockerfile: Entity/Presentation/Entity.API/Dockerfile
+    container_name: clientapi
+    networks: 
+        - entity-network
+  identityserver:
+    image: identityserver
+    build:
+      context: .
+      dockerfile: Services/IdentityServer/Dockerfile
+    container_name: identityserver
+    networks: 
+        - entity-network
+  ocelotgateway:
+    image: entity-ocelotgateway
+    ports:
+      - 9999:80
+    build:
+      context: .
+      dockerfile: APIGateway/APIGateway.OcelotGateway/Dockerfile
+    container_name: ocelotgateway
+    depends_on:
+        - client.api
+        - identityserver
+    networks: 
+        - entity-network
+networks:
+  entity-network:

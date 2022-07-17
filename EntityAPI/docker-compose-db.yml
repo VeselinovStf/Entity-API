@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server
+    networks: 
+        - entity-network
+    container_name: entity-db
+    ports:
+      - 1433:1433
+    user: root
+    volumes:
+      - ${DB_VOLUME_APPDATA}/:/var/opt/mssql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${DB_PASSWORD}
+networks:
+  entity-network:

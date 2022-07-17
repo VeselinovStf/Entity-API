@@ -1,0 +1,99 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Client",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "client.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/clients",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "identityAPIService",
+        "AllowedScopes": [ "adminIdentityAPIService", "identityAPIService" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Client/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "client.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/clients/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "identityAPIService",
+        "AllowedScopes": [ "adminIdentityAPIService", "identityAPIService" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Client/create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "client.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/clients",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "identityAPIService",
+        "AllowedScopes": [ "adminIdentityAPIService" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Client/edit",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "client.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/clients",
+      "UpstreamHttpMethod": [ "PUT" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "identityAPIService",
+        "AllowedScopes": [ "adminIdentityAPIService" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Client/delete/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "client.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/clients",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "identityAPIService",
+        "AllowedScopes": [ "adminIdentityAPIService" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "identityserver",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/token",
+      "UpstreamHttpMethod": [ "POST" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:9999"
+  }
+}
