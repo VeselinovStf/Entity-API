@@ -1,5 +1,7 @@
 # Entity-API
 
+![simple representation](https://github.com/VeselinovStf/Entity-API/blob/main/repo/img.png)
+
 Building blocks for creating API/Microservice projects
 
 ## Tech Stack
