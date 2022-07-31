@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using BuildingBlock.Messaging.Abstraction.EventBus;
 using BuildingBlock.Messaging.Abstraction.EventBus.Events;
-using BuildingBlock.Messaging.Abstraction.RabbitMQ;
+using BuildingBlock.Messaging.Abstraction.MQ;
 using BuildingBlock.EventBus;
 using BuildingBlock.EventBus.Extensions;
 using Microsoft.Extensions.Logging;
@@ -22,7 +22,7 @@ namespace BuildingBlock.EventBusRabboitMQ
         const string BROKER_NAME = "entity_event_bus";
         const string AUTOFAC_SCOPE_NAME = "entity_event_bus";
 
-        private readonly IRabbitMQPersistentConnection _persistentConnection;
+        private readonly IMQPersistentConnection _persistentConnection;
         private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubscriptionsManager _subsManager;
         private readonly ILifetimeScope _autofac;
@@ -31,7 +31,7 @@ namespace BuildingBlock.EventBusRabboitMQ
         private IModel _consumerChannel;
         private string _queueName;
 
-        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger,
+        public EventBusRabbitMQ(IMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger,
             ILifetimeScope autofac, IEventBusSubscriptionsManager subsManager, string queueName = null, int retryCount = 5)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));

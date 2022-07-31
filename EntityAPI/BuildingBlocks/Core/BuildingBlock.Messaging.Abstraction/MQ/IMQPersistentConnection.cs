@@ -1,9 +1,9 @@
 ﻿using RabbitMQ.Client;
 using System;
 
-namespace BuildingBlock.Messaging.Abstraction.RabbitMQ
+namespace BuildingBlock.Messaging.Abstraction.MQ
 {
-    public interface IRabbitMQPersistentConnection
+    public interface IMQPersistentConnection
         : IDisposable
     {
         bool IsConnected { get; }

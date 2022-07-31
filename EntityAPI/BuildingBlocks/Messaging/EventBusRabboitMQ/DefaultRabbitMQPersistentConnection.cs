@@ -1,4 +1,4 @@
-﻿using BuildingBlock.Messaging.Abstraction.RabbitMQ;
+﻿using BuildingBlock.Messaging.Abstraction.MQ;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
@@ -10,7 +10,7 @@ using System.Net.Sockets;
 namespace BuildingBlock.EventBusRabboitMQ
 {
     public class DefaultRabbitMQPersistentConnection
-      : IRabbitMQPersistentConnection
+      : IMQPersistentConnection
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly ILogger<DefaultRabbitMQPersistentConnection> _logger;

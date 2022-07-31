@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using BuildingBlock.Messaging.Abstraction.EventBus;
-using BuildingBlock.Messaging.Abstraction.RabbitMQ;
+using BuildingBlock.Messaging.Abstraction.MQ;
 using BuildingBlock.EventBus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -16,7 +16,7 @@ namespace BuildingBlock.EventBusRabboitMQ.Extensions
             string virtualHost,
             int retryCount = 5)
         {
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            services.AddSingleton<IMQPersistentConnection>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
@@ -32,7 +32,7 @@ namespace BuildingBlock.EventBusRabboitMQ.Extensions
          
             services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
             {
-                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+                var rabbitMQPersistentConnection = sp.GetRequiredService<IMQPersistentConnection>();
 
                 var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
                 var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
