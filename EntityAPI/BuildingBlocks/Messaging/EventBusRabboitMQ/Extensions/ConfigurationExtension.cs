@@ -10,6 +10,14 @@ namespace BuildingBlock.EventBusRabboitMQ.Extensions
 {
     public static class ConfigurationExtension
     {
+        /// <summary>
+        /// Add RabbitMQ to Application
+        /// </summary>
+        /// <param name="services">Collection of service descriptors</param>
+        /// <param name="connectionString">MQ Connection String</param>
+        /// <param name="subscriptionClientName">SC name</param>
+        /// <param name="virtualHost">V Host name</param>
+        /// <param name="retryCount">Connection retry count</param>
         public static void AddEventBusRabboitMQ(this IServiceCollection services, 
             string connectionString,
             string subscriptionClientName,
