@@ -10,7 +10,7 @@ namespace BuildingBlock.EventBusRabboitMQ.Extensions
 {
     public static class ConfigurationExtension
     {
-        public static void AddAppLogger(this IServiceCollection services, 
+        public static void AddEventBusRabboitMQ(this IServiceCollection services, 
             string connectionString,
             string subscriptionClientName,
             string virtualHost,
